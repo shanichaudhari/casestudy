@@ -1,0 +1,89 @@
+
+
+<div class="dataContainer">
+    <br>
+      <h1 style="text-align: center;">Employees</h1>
+
+    <table mat-table [dataSource]="employees" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customColumn1">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        <td mat-cell *matCellDef="let element">
+          <a (click)="onEditEmployee(element.id)" class="cursorPointer"><i class="material-icons">edit</i></a>
+          &nbsp;&nbsp;
+          <a (click)="onDeleteEmployee(element.id)" class="cursorPointer"><i class="material-icons">delete</i></a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <br>
+    <div style="text-align: right;">
+      <button (click)="onDisplayAddEmployee()" style="margin-right: 10px;">Add new Employee</button>
+    </div>
+
+
+
+<br>
+<br>
+
+<div [hidden]="isHideAddEmployee" class="">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <h1 style="text-align: center;">{{isEditEmployeeForm?'Edit':'Add'}} Employee</h1>
+
+      <form (submit)="onSubmitAddEmployee()" [formGroup]="addEmployeeForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" class="form-control"/>
+            <span *ngIf="!addEmployeeForm.get('name')!.valid && addEmployeeForm.get('name')!.touched"
+                class="err-msg-style">Employee name should be greater than 3 characters and less than 100 characters</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Salary</label>
+            <input type="text" formControlName="salary" class="form-control"/>
+            <span *ngIf="!addEmployeeForm.get('salary')!.valid && addEmployeeForm.get('salary')!.touched"
+                class="err-msg-style">Salary should be numeric and less than 6 digit</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Email</label>
+            <input type="text" formControlName="email" class="form-control"/>
+            <span *ngIf="!addEmployeeForm.get('email')!.valid && addEmployeeForm.get('email')!.touched"
+                class="err-msg-style">Please enter valid email</span>
+          </div>
+
+          <br><br>
+
+          <button type="submit" class="btn btn-success" [disabled]="!addEmployeeForm.valid" *ngIf="!isEditEmployeeForm">Add Employee</button>
+
+          <button type="submit" class="btn btn-success" [disabled]="!addEmployeeForm.valid" *ngIf="isEditEmployeeForm">Update Employee</button>
+
+          <br><br><br>
+
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+</div>

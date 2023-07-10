@@ -1,0 +1,14 @@
+table {
+  width: 100%;
+
+}
+
+.dataContainer{
+  margin: 10px;
+  width: 50%;
+  margin: auto;
+}
+
+.cursorPointer{
+  cursor: pointer;
+}

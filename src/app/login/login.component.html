@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4 ">
+            <div class="box effect1">
+                <form (ngSubmit)="onSubmit(loginform)" #loginform="ngForm">
+                    <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="Username"
+                            required
+                            [(ngModel)]="username" name="username"
+                            #cnt1="ngModel">
+                    <span *ngIf="cnt1.invalid && cnt1.touched">
+                        Username is required
+                    </span>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="Password"
+                            [(ngModel)]="password" name="password" #cnt2="ngModel" required>
+                        <span *ngIf="cnt2.invalid && cnt2.touched">
+                            Password is required
+                        </span>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" [disabled]="!loginform.form.valid">Submit</button>
+                    <div class="alert alert-danger" *ngIf="errMessage">{{errMessage}}</div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>

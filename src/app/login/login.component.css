@@ -1,0 +1,9 @@
+.box {
+    background:#FFF;
+    margin:40px auto;
+    padding: 13px;
+  }
+
+.effect1{
+  box-shadow: 0 8px 8px -4px lightblue;
+}

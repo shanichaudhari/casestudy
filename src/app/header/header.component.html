@@ -1,0 +1,12 @@
+
+
+<div class="header">
+  <a [routerLink]="['/']" class="logo">Angular</a>
+  <div class="header-right">
+    <a [routerLink]="['/home']" routerLinkActive="active" [hidden]="!isLoggedIn">Home</a>
+    <a [routerLink]="['/employee']" routerLinkActive="active" [hidden]="!isLoggedIn">Employee</a>
+    <a [routerLink]="['/login']" routerLinkActive="active" [hidden]="isLoggedIn">Login</a>
+    <a href="#" (click)="onLogout()" routerLinkActive="active" [hidden]="!isLoggedIn">Logout</a>
+
+  </div>
+</div>
